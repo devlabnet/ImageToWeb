@@ -11,14 +11,13 @@ namespace imageToWeb {
         // context menu name in the registry
         const string KeyName = "OptWebImage";
         // context menu text
-        const string MenuText = "Image->WEB800";
-        const int maxSize = 800;
+        const string MenuText = "Image->WEB";
 
         static void Main(string[] args) {
             // process register or unregister commands
             if (!ProcessCommand(args)) {
                 // invoked from shell, process the selected file
-                DoOpt(args[0], maxSize);
+                DoOpt(args);
             }
         }
 
@@ -49,22 +48,46 @@ namespace imageToWeb {
                 }
                 return true;
             }
+            // settings
+            if (string.Compare(args[0], "-settting", true) == 0) {
+                Settings us = new Settings();
+                us.ShowDialog();
+                return true;
+            }
             // command line did not contain an action
             return false;
         }
 
-        private static void DoOpt(string args, int maxSize) {
-            // Test if input arguments were supplied:
-            if (args.Length == 0) {
-                //System.Console.WriteLine("Please enter a numeric argument.");
-                //System.Console.WriteLine("Usage: imageToWeb <image>");
-                return;
-            }
-            // Try to convert the input arguments to numbers. This will throw
-            // an exception if the argument is not a number.
-            // num = int.Parse(args[0]);
+        private static void DoOpt(string[] args) {
+            //// Test if input arguments were supplied:
+            //if (args.Length < 3) {
+            //    //System.Console.WriteLine("Please enter a numeric argument.");
+            //    //System.Console.WriteLine("Usage: imageToWeb <image>");
+            //    return;
+            //}
+            //// Try to convert the input arguments to numbers. This will throw
+            //// an exception if the argument is not a number.
+            //// num = int.Parse(args[0]);
+            //int quality;
+            //try {
+            //    quality = Int32.Parse(args[1]);
+            //    if ((quality < 10) || (quality > 100)) return;
+            //} catch (FormatException e) {
+            //    Console.WriteLine(e.Message);
+            //    return;
+            //}
+            //int maxSize;
+            //try {
+            //    maxSize = Int32.Parse(args[2]);
+            //    if ((maxSize < 10) || (maxSize > 2000)) return;
+            //} catch (FormatException e) {
+            //    Console.WriteLine(e.Message);
+            //    return;
+            //}
+            int quality = Properties.Settings1.Default.quality;
+            int maxSize = Properties.Settings1.Default.maxSize;
             String imagePath;
-            imagePath = args;
+            imagePath = args[0];
             //System.Console.WriteLine("Image Path: " + imagePath);
             if (File.Exists(imagePath)) {
                 //System.Console.WriteLine("Image Path: " + imagePath + " ----> OK");
@@ -82,12 +105,12 @@ namespace imageToWeb {
                 String newFilePath;
                 //newFilePath  = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web90" + extension;
                 //SaveWebImage(newFilePath, resized, 90);
-                newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web70" + extension;
-                SaveWebImage(newFilePath, resized, 70);
-                newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web50" + extension;
-                SaveWebImage(newFilePath, resized, 50);
-                newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web30" + extension;
-                SaveWebImage(newFilePath, resized, 30);
+                newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_" + maxSize + "_" + quality + extension;
+                SaveWebImage(newFilePath, resized, quality);
+                //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web50" + extension;
+                //SaveWebImage(newFilePath, resized, 50);
+                //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web30" + extension;
+                //SaveWebImage(newFilePath, resized, 30);
                 //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web10" + extension;
                 //SaveWebImage(newFilePath, resized, 10);
                 //} else {

@@ -32,17 +32,35 @@ namespace imageToWeb {
 
             try {
                 // add context menu to the registry
-                using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(regPath)) {
-                    key.SetValue(null, menuText);
-                    key.SetValue("icon", iconPath);
-                    key.SetValue("AppliesTo", "image");
-                }
+                RegistryKey topKey = Registry.ClassesRoot.CreateSubKey(regPath);
+                topKey.SetValue("icon", iconPath);
+                topKey.SetValue("AppliesTo", "image");
+                topKey.SetValue("MUIVerb", menuText);
+                topKey.SetValue("subcommands", "");
+                // add shell for subcommands
+                RegistryKey keyShell = topKey.CreateSubKey("shell");
 
-                // add command that is invoked to the registry
-                using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(
-                    string.Format(@"{0}\command", regPath))) {
-                    key.SetValue(null, menuCommand);
-                }
+                // Add SubCommands
+                RegistryKey keySubAction = keyShell.CreateSubKey("action1"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
+                keySubAction.SetValue(null, "50 500");
+                RegistryKey keySubCommand = keySubAction.CreateSubKey("command");
+                keySubCommand.SetValue(null, menuCommand + " 50 500");
+
+                keySubAction = keyShell.CreateSubKey("action2"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
+                keySubAction.SetValue(null, "30 300");
+                keySubCommand = keySubAction.CreateSubKey("command");
+                keySubCommand.SetValue(null, menuCommand + " 30 300");
+
+                //keySubAction = Registry.ClassesRoot.CreateSubKey(string.Format(@"{0}\action2", regPath));
+                //keySubAction.SetValue(null, "30 300");
+                //keySubCommand = Registry.ClassesRoot.CreateSubKey(string.Format(@"{0}\action2\command", regPath));
+                //keySubCommand.SetValue(null, menuCommand + " 30 300");
+
+                //// add command that is invoked to the registry
+                //using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(
+                //    string.Format(@"{0}\command", regPath))) {
+                //    key.SetValue(null, menuCommand + " 50 500");
+                //}
             } catch (Exception ex) {
                 MessageBox.Show(string.Format(
                     "{0} \n(Please Run as Administrator).",
