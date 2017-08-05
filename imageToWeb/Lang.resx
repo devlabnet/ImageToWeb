@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="lblMaxSize" xml:space="preserve">
+    <value>Taille Max</value>
+  </data>
+  <data name="lblQuality" xml:space="preserve">
+    <value>Qualité</value>
+  </data>
+  <data name="regOK" xml:space="preserve">
+    <value>L'extention shell {0} à été enrregistrée.</value>
+  </data>
+  <data name="runAsAdmin" xml:space="preserve">
+    <value>(Executer avec les privilèges d'adminidtrateur).</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="unregOK" xml:space="preserve">
+    <value>L'extention shell {0} à été supprimée.</value>
+  </data>
 </root>

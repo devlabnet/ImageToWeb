@@ -12,6 +12,9 @@ namespace imageToWeb {
     public partial class Settings : Form {
         public Settings() {
             InitializeComponent();
+            //Form.ActiveForm.Text = "xxxx";
+            buttonCancel.Text = imageToWeb.Program.rm.GetString("cancel", Program.cul);
+            buttonOK.Text = imageToWeb.Program.rm.GetString("save", Program.cul);
             MaxSizeTrackBar.Minimum = 100;
             MaxSizeTrackBar.Maximum = 1500;
             MaxSizeTrackBar.TickFrequency = 50;
@@ -19,8 +22,8 @@ namespace imageToWeb {
             MaxSizeTrackBar.LargeChange = 100;
             MaxSizeTrackBar.Value = Properties.Settings1.Default.maxSize;
             MaxSizeLabel.Text = MaxSizeTrackBar.Value.ToString();
+            lblMaxSize.Text = imageToWeb.Program.rm.GetString("lblMaxSize", Program.cul);
             MaxSizeTrackBar.Scroll += new System.EventHandler(MaxSizeTrackBar_Scroll);
-            QualityTrackBar.Scroll += new System.EventHandler(QualityTrackBar_Scroll);
             QualityTrackBar.Minimum = 10;
             QualityTrackBar.Maximum = 90;
             QualityTrackBar.TickFrequency = 10;
@@ -28,6 +31,9 @@ namespace imageToWeb {
             QualityTrackBar.LargeChange = 20;
             QualityTrackBar.Value = Properties.Settings1.Default.quality;
             QualityLabel.Text = QualityTrackBar.Value.ToString();
+            lblQuality.Text = imageToWeb.Program.rm.GetString("lblQuality", Program.cul);
+            QualityTrackBar.Scroll += new System.EventHandler(QualityTrackBar_Scroll);
+
 
         }
 

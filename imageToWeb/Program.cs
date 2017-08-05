@@ -5,6 +5,9 @@ using System.Linq;
 using System.Drawing.Imaging;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Resources;
+using System.Globalization;
+using System.Reflection;
 
 namespace imageToWeb {
     class Program {
@@ -13,7 +16,12 @@ namespace imageToWeb {
         // context menu text
         const string MenuText = "Image->WEB";
 
+        public static ResourceManager rm;    // declare Resource manager to access to specific cultureinfo
+        public static CultureInfo cul;            // declare culture info
+
         static void Main(string[] args) {
+            rm = new ResourceManager("imageToWeb.Lang", typeof(Settings).Assembly);
+            cul = CultureInfo.CreateSpecificCulture("");     //create culture for english
             // process register or unregister commands
             if (!ProcessCommand(args)) {
                 // invoked from shell, process the selected file
@@ -21,22 +29,26 @@ namespace imageToWeb {
             }
         }
 
-        /// <summary>
-        /// Process command line actions (register or unregister).
-        /// </summary>
-        /// <param name="args">Command line arguments.</param>
-        /// <returns>True if processed an action in the command line.</returns>
-        static bool ProcessCommand(string[] args) {
+        static void switch_language() {
+            cul = CultureInfo.CreateSpecificCulture("fr");     //create culture for english
+        }
+
+            /// <summary>
+            /// Process command line actions (register or unregister).
+            /// </summary>
+            /// <param name="args">Command line arguments.</param>
+            /// <returns>True if processed an action in the command line.</returns>
+            static bool ProcessCommand(string[] args) {
             // register
             if (args.Length == 0 || string.Compare(args[0], "-register", true) == 0) {
                 string iconPath = Application.CommonAppDataPath + Path.DirectorySeparatorChar + "MenuIcon.ico";
                 // full path to self, %L is placeholder for selected file
                 string menuCommand = string.Format("\"{0}\" \"%L\"", Application.ExecutablePath);
                 string settingsCommand = string.Format("\"{0}\" -setting", Application.ExecutablePath);
+
                 // register the context menu
                 if (FileShellExtension.Register(Program.KeyName, Program.MenuText, menuCommand, settingsCommand, iconPath)) {
-                    MessageBox.Show(string.Format("The {0} shell extension was registered.",
-                        Program.KeyName), Program.KeyName);
+                    MessageBox.Show(string.Format(rm.GetString("regOK", cul), Program.KeyName), Program.KeyName);
                 }
                 return true;
             }
@@ -44,8 +56,7 @@ namespace imageToWeb {
             if (string.Compare(args[0], "-unregister", true) == 0) {
                 // unregister the context menu
                 if (FileShellExtension.Unregister(Program.KeyName)) {
-                    MessageBox.Show(string.Format("The {0} shell extension was unregistered.",
-                        Program.KeyName), Program.KeyName);
+                    MessageBox.Show(string.Format(rm.GetString("unregOK", cul), Program.KeyName), Program.KeyName);
                 }
                 return true;
             }

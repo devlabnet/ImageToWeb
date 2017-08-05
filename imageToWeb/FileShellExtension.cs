@@ -56,7 +56,7 @@ namespace imageToWeb {
                 keySubCommand.SetValue(null, settingsCommand);
             } catch (Exception ex) {
                 MessageBox.Show(string.Format(
-                    "{0} \n(Please Run as Administrator).",
+                    "{0} \n" + imageToWeb.Program.rm.GetString("runAsAdmin", Program.cul),
                     ex.Message), "Register Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -78,7 +78,7 @@ namespace imageToWeb {
 			    Registry.ClassesRoot.DeleteSubKeyTree(regPath);
             } catch (Exception ex) {
                 MessageBox.Show(string.Format(
-                    "{0} \n(Please Run as Administrator).",
+                    "{0} \n" + imageToWeb.Program.rm.GetString("runAsAdmin", Program.cul),
                     ex.Message), "Unregister Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
