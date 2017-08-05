@@ -25,7 +25,7 @@ namespace imageToWeb.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int quality {
             get {
                 return ((int)(this["quality"]));
@@ -37,7 +37,7 @@ namespace imageToWeb.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("600")]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
         public int maxSize {
             get {
                 return ((int)(this["maxSize"]));

@@ -32,8 +32,9 @@ namespace imageToWeb {
                 string iconPath = Application.CommonAppDataPath + Path.DirectorySeparatorChar + "MenuIcon.ico";
                 // full path to self, %L is placeholder for selected file
                 string menuCommand = string.Format("\"{0}\" \"%L\"", Application.ExecutablePath);
+                string settingsCommand = string.Format("\"{0}\" -setting", Application.ExecutablePath);
                 // register the context menu
-                if (FileShellExtension.Register(Program.KeyName, Program.MenuText, menuCommand, iconPath)) {
+                if (FileShellExtension.Register(Program.KeyName, Program.MenuText, menuCommand, settingsCommand, iconPath)) {
                     MessageBox.Show(string.Format("The {0} shell extension was registered.",
                         Program.KeyName), Program.KeyName);
                 }
@@ -49,7 +50,7 @@ namespace imageToWeb {
                 return true;
             }
             // settings
-            if (string.Compare(args[0], "-settting", true) == 0) {
+            if (string.Compare(args[0], "-setting", true) == 0) {
                 Settings us = new Settings();
                 us.ShowDialog();
                 return true;
@@ -59,64 +60,21 @@ namespace imageToWeb {
         }
 
         private static void DoOpt(string[] args) {
-            //// Test if input arguments were supplied:
-            //if (args.Length < 3) {
-            //    //System.Console.WriteLine("Please enter a numeric argument.");
-            //    //System.Console.WriteLine("Usage: imageToWeb <image>");
-            //    return;
-            //}
-            //// Try to convert the input arguments to numbers. This will throw
-            //// an exception if the argument is not a number.
-            //// num = int.Parse(args[0]);
-            //int quality;
-            //try {
-            //    quality = Int32.Parse(args[1]);
-            //    if ((quality < 10) || (quality > 100)) return;
-            //} catch (FormatException e) {
-            //    Console.WriteLine(e.Message);
-            //    return;
-            //}
-            //int maxSize;
-            //try {
-            //    maxSize = Int32.Parse(args[2]);
-            //    if ((maxSize < 10) || (maxSize > 2000)) return;
-            //} catch (FormatException e) {
-            //    Console.WriteLine(e.Message);
-            //    return;
-            //}
             int quality = Properties.Settings1.Default.quality;
             int maxSize = Properties.Settings1.Default.maxSize;
             String imagePath;
             imagePath = args[0];
-            //System.Console.WriteLine("Image Path: " + imagePath);
             if (File.Exists(imagePath)) {
-                //System.Console.WriteLine("Image Path: " + imagePath + " ----> OK");
                 var currentPath = Path.GetFullPath(imagePath);
                 currentPath = Directory.GetParent(currentPath).FullName;
-                //System.Console.WriteLine("Image currentPath: " + currentPath + " ----> OK");
                 var fName = Path.GetFileName(imagePath);
-                //System.Console.WriteLine("Image file name: " + fName + " ----> OK");
                 var extension = Path.GetExtension(imagePath);
-                //System.Console.WriteLine("Image file ext: " + extension + " ----> OK");
                 var fNameWithoutExtension = Path.GetFileNameWithoutExtension(imagePath);
-                //System.Console.WriteLine("Image file name without ext: " + fNameWithoutExtension + " ----> OK");
                 var resized = ResizeImage(imagePath, maxSize, maxSize);
                 extension = ".jpg";
                 String newFilePath;
-                //newFilePath  = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web90" + extension;
-                //SaveWebImage(newFilePath, resized, 90);
                 newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_" + maxSize + "_" + quality + extension;
                 SaveWebImage(newFilePath, resized, quality);
-                //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web50" + extension;
-                //SaveWebImage(newFilePath, resized, 50);
-                //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web30" + extension;
-                //SaveWebImage(newFilePath, resized, 30);
-                //newFilePath = currentPath + Path.DirectorySeparatorChar + fNameWithoutExtension + "_web10" + extension;
-                //SaveWebImage(newFilePath, resized, 10);
-                //} else {
-                //    //System.Console.WriteLine("Image Path: " + imagePath + " ----> NOT OK");
-                //}
-                //return 0;
             }
         }
 
@@ -224,7 +182,7 @@ namespace imageToWeb {
             //create an encoder parameter for the image quality
             EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
             //get the jpeg codec
-            ImageCodecInfo jpegCodec = GetEncoderInfo0("image/jpeg");
+            ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
             //create a collection of all parameters that we will pass to the encoder
             EncoderParameters encoderParams = new EncoderParameters(1);
             //set the quality parameter for the codec
@@ -236,7 +194,7 @@ namespace imageToWeb {
         /// <summary> 
         /// Returns the image codec with the given mime type 
         /// </summary> 
-        public static ImageCodecInfo GetEncoderInfo0(string mimeType) {
+        public static ImageCodecInfo GetEncoderInfo(string mimeType) {
             //do a case insensitive search for the mime type
             string lookupKey = mimeType.ToLower();
             //the codec to return, default to null

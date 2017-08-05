@@ -24,8 +24,8 @@ namespace imageToWeb {
             QualityTrackBar.Minimum = 10;
             QualityTrackBar.Maximum = 90;
             QualityTrackBar.TickFrequency = 10;
-            QualityTrackBar.SmallChange = 5;
             QualityTrackBar.SmallChange = 10;
+            QualityTrackBar.LargeChange = 20;
             QualityTrackBar.Value = Properties.Settings1.Default.quality;
             QualityLabel.Text = QualityTrackBar.Value.ToString();
 

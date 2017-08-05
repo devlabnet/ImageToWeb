@@ -16,11 +16,13 @@ namespace imageToWeb {
         /// <param name="menuText">Text that appears in the context menu.</param>
         /// <param name="menuCommand">Command line that is executed.</param>
         /// <param name="iconPath">The file path for the command Icon.</param>
-        public static bool Register(string shellKeyName, string menuText, string menuCommand,  string iconPath)
+        public static bool Register(string shellKeyName, string menuText, string menuCommand,
+            string settingsCommand, string iconPath)
 		{
 			Debug.Assert(   !string.IsNullOrEmpty(shellKeyName) &&
                             !string.IsNullOrEmpty(menuText) &&
                             !string.IsNullOrEmpty(menuCommand) &&
+                            !string.IsNullOrEmpty(settingsCommand) &&
                             !string.IsNullOrEmpty(iconPath));
 			
 			// create full path to registry location
@@ -41,26 +43,17 @@ namespace imageToWeb {
                 RegistryKey keyShell = topKey.CreateSubKey("shell");
 
                 // Add SubCommands
-                RegistryKey keySubAction = keyShell.CreateSubKey("action1"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
-                keySubAction.SetValue(null, "50 500");
+                RegistryKey keySubAction = keyShell.CreateSubKey("GO"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
+                keySubAction.SetValue(null, "GO");
+                keySubAction.SetValue("icon", "imageres.dll,176");
                 RegistryKey keySubCommand = keySubAction.CreateSubKey("command");
-                keySubCommand.SetValue(null, menuCommand + " 50 500");
+                keySubCommand.SetValue(null, menuCommand);
 
-                keySubAction = keyShell.CreateSubKey("action2"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
-                keySubAction.SetValue(null, "30 300");
+                keySubAction = keyShell.CreateSubKey("Settings"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
+                keySubAction.SetValue(null, "Settings");
+                keySubAction.SetValue("icon", "imageres.dll,109");
                 keySubCommand = keySubAction.CreateSubKey("command");
-                keySubCommand.SetValue(null, menuCommand + " 30 300");
-
-                //keySubAction = Registry.ClassesRoot.CreateSubKey(string.Format(@"{0}\action2", regPath));
-                //keySubAction.SetValue(null, "30 300");
-                //keySubCommand = Registry.ClassesRoot.CreateSubKey(string.Format(@"{0}\action2\command", regPath));
-                //keySubCommand.SetValue(null, menuCommand + " 30 300");
-
-                //// add command that is invoked to the registry
-                //using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(
-                //    string.Format(@"{0}\command", regPath))) {
-                //    key.SetValue(null, menuCommand + " 50 500");
-                //}
+                keySubCommand.SetValue(null, settingsCommand);
             } catch (Exception ex) {
                 MessageBox.Show(string.Format(
                     "{0} \n(Please Run as Administrator).",
@@ -70,11 +63,11 @@ namespace imageToWeb {
             return true;
         }
 
-		/// <summary>
-		/// Unregister a simple shell context menu.
-		/// </summary>
-		/// <param name="shellKeyName">Name that was registered in the registry.</param>
-		public static bool Unregister(string shellKeyName)
+        /// <summary>
+        /// Unregister a simple shell context menu.
+        /// </summary>
+        /// <param name="shellKeyName">Name that was registered in the registry.</param>
+        public static bool Unregister(string shellKeyName)
 		{
 			Debug.Assert(!string.IsNullOrEmpty(shellKeyName));
                 
