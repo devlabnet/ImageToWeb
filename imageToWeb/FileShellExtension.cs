@@ -36,7 +36,7 @@ namespace imageToWeb {
                 // add context menu to the registry
                 RegistryKey topKey = Registry.ClassesRoot.CreateSubKey(regPath);
                 topKey.SetValue("icon", iconPath);
-                topKey.SetValue("AppliesTo", "image");
+                topKey.SetValue("AppliesTo", ".jpg OR .bmp OR .png OR .gif OR .jpeg OR .tiff");
                 topKey.SetValue("MUIVerb", menuText);
                 topKey.SetValue("subcommands", "");
                 // add shell for subcommands

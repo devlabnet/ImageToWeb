@@ -135,6 +135,9 @@
   <data name="save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="settings" xml:space="preserve">
+    <value>Parameters Setting</value>
+  </data>
   <data name="unregOK" xml:space="preserve">
     <value>The {0} shell extension was unregistered.</value>
   </data>

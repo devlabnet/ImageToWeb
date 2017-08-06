@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace imageToWeb {
-    public partial class Settings : Form {
-        public Settings() {
+    public partial class SettingForm : Form {
+        public SettingForm() {
             InitializeComponent();
             //Form.ActiveForm.Text = "xxxx";
+            this.Text = imageToWeb.Program.rm.GetString("settings", Program.cul); ;
             buttonCancel.Text = imageToWeb.Program.rm.GetString("cancel", Program.cul);
             buttonOK.Text = imageToWeb.Program.rm.GetString("save", Program.cul);
             MaxSizeTrackBar.Minimum = 100;

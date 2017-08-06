@@ -121,7 +121,7 @@
     <value>Annuler</value>
   </data>
   <data name="lblMaxSize" xml:space="preserve">
-    <value>Taille Max</value>
+    <value>Taille Maximum</value>
   </data>
   <data name="lblQuality" xml:space="preserve">
     <value>Qualité</value>
@@ -134,6 +134,9 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Enregistrer</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Gestion des Paramètres</value>
   </data>
   <data name="unregOK" xml:space="preserve">
     <value>L'extention shell {0} à été supprimée.</value>

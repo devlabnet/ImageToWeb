@@ -20,7 +20,7 @@ namespace imageToWeb {
         public static CultureInfo cul;            // declare culture info
 
         static void Main(string[] args) {
-            rm = new ResourceManager("imageToWeb.Lang", typeof(Settings).Assembly);
+            rm = new ResourceManager("imageToWeb.Lang", typeof(SettingForm).Assembly);
             cul = CultureInfo.CreateSpecificCulture("");     //create culture for english
             // process register or unregister commands
             if (!ProcessCommand(args)) {
@@ -62,7 +62,7 @@ namespace imageToWeb {
             }
             // settings
             if (string.Compare(args[0], "-setting", true) == 0) {
-                Settings us = new Settings();
+                SettingForm us = new SettingForm();
                 us.ShowDialog();
                 return true;
             }
