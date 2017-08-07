@@ -61,6 +61,33 @@ namespace imageToWeb {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Annuler.
+        /// </summary>
+        internal static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taille Maximum.
+        /// </summary>
+        internal static string lblMaxSize {
+            get {
+                return ResourceManager.GetString("lblMaxSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qualité.
+        /// </summary>
+        internal static string lblQuality {
+            get {
+                return ResourceManager.GetString("lblQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L&apos;extention shell {0} à été enrregistrée..
         /// </summary>
         internal static string regOK {
@@ -75,6 +102,33 @@ namespace imageToWeb {
         internal static string runAsAdmin {
             get {
                 return ResourceManager.GetString("runAsAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enregistrer.
+        /// </summary>
+        internal static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gestion des Paramètres.
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paramètres.
+        /// </summary>
+        internal static string settingsReg {
+            get {
+                return ResourceManager.GetString("settingsReg", resourceCulture);
             }
         }
         

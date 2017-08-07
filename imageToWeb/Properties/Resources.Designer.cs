@@ -59,5 +59,25 @@ namespace imageToWeb.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap france_flag_3d_round_icon_64 {
+            get {
+                object obj = ResourceManager.GetObject("france-flag-3d-round-icon-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap united_states_of_america_flag_3d_round_icon_64 {
+            get {
+                object obj = ResourceManager.GetObject("united-states-of-america-flag-3d-round-icon-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

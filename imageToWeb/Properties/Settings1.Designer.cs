@@ -46,5 +46,17 @@ namespace imageToWeb.Properties {
                 this["maxSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("undef")]
+        public string userCulture {
+            get {
+                return ((string)(this["userCulture"]));
+            }
+            set {
+                this["userCulture"] = value;
+            }
+        }
     }
 }

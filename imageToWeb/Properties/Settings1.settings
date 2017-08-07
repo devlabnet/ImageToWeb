@@ -8,5 +8,8 @@
     <Setting Name="maxSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">800</Value>
     </Setting>
+    <Setting Name="userCulture" Type="System.String" Scope="User">
+      <Value Profile="(Default)">undef</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Resources;
 using System.Globalization;
-using System.Reflection;
 
 namespace imageToWeb {
     class Program {
@@ -20,8 +19,25 @@ namespace imageToWeb {
         public static CultureInfo cul;            // declare culture info
 
         static void Main(string[] args) {
+            //CultureInfo ci = CultureInfo.InstalledUICulture;
+            //Console.WriteLine("Installed Language Info:{0}", ci.Name);
+            if (Properties.Settings1.Default.userCulture == "undef") {
+                CultureInfo ci = CultureInfo.CurrentUICulture;
+                Console.WriteLine("Current UI Language Info: {0}", ci.Name);
+                if (ci.Name != "fr-FR") {
+                    cul = CultureInfo.CreateSpecificCulture("en");     //create en-US culture for default
+                    Properties.Settings1.Default.userCulture = "en-US";
+                } else {
+                    cul = CultureInfo.CreateSpecificCulture("fr");     //create fr culture
+                    Properties.Settings1.Default.userCulture = "fr-FR";
+                }
+            } else {
+                cul = CultureInfo.CreateSpecificCulture(Properties.Settings1.Default.userCulture);     //create user settings culture for default
+            }
+
+            //ci = CultureInfo.CurrentCulture;
+            //Console.WriteLine("Current Language Info: {0}", ci.Name);
             rm = new ResourceManager("imageToWeb.Lang", typeof(SettingForm).Assembly);
-            cul = CultureInfo.CreateSpecificCulture("");     //create culture for english
             // process register or unregister commands
             if (!ProcessCommand(args)) {
                 // invoked from shell, process the selected file
@@ -30,7 +46,7 @@ namespace imageToWeb {
         }
 
         static void switch_language() {
-            cul = CultureInfo.CreateSpecificCulture("fr");     //create culture for english
+            cul = CultureInfo.CreateSpecificCulture("en-US");     //create culture for english
         }
 
         /// <summary>
