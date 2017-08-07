@@ -38,7 +38,7 @@
             // buttonOK
             // 
             this.buttonOK.AutoSize = true;
-            this.buttonOK.Location = new System.Drawing.Point(180, 154);
+            this.buttonOK.Location = new System.Drawing.Point(342, 148);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(95, 33);
             this.buttonOK.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.buttonCancel.AutoSize = true;
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(361, 154);
+            this.buttonCancel.Location = new System.Drawing.Point(496, 148);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.buttonCancel.Size = new System.Drawing.Size(95, 33);
@@ -70,9 +70,10 @@
             // 
             // MaxSizeTrackBar
             // 
+            this.MaxSizeTrackBar.AutoSize = false;
             this.MaxSizeTrackBar.Location = new System.Drawing.Point(173, 21);
             this.MaxSizeTrackBar.Name = "MaxSizeTrackBar";
-            this.MaxSizeTrackBar.Size = new System.Drawing.Size(350, 80);
+            this.MaxSizeTrackBar.Size = new System.Drawing.Size(350, 40);
             this.MaxSizeTrackBar.TabIndex = 4;
             this.MaxSizeTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.MaxSizeTrackBar.MouseCaptureChanged += new System.EventHandler(this.MaxSizeTrackBar_MouseCaptureChanged);
@@ -99,9 +100,10 @@
             // 
             // QualityTrackBar
             // 
+            this.QualityTrackBar.AutoSize = false;
             this.QualityTrackBar.Location = new System.Drawing.Point(173, 75);
             this.QualityTrackBar.Name = "QualityTrackBar";
-            this.QualityTrackBar.Size = new System.Drawing.Size(350, 80);
+            this.QualityTrackBar.Size = new System.Drawing.Size(350, 40);
             this.QualityTrackBar.TabIndex = 7;
             this.QualityTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 

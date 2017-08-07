@@ -33,12 +33,14 @@ namespace imageToWeb {
             cul = CultureInfo.CreateSpecificCulture("fr");     //create culture for english
         }
 
-            /// <summary>
-            /// Process command line actions (register or unregister).
-            /// </summary>
-            /// <param name="args">Command line arguments.</param>
-            /// <returns>True if processed an action in the command line.</returns>
-            static bool ProcessCommand(string[] args) {
+        /// <summary>
+        /// Process command line actions (register or unregister).
+        /// </summary>
+        /// <param name="args">Command line arguments.</param>
+        /// <returns>True if processed an action in the command line.</returns>
+        /// 
+
+        static bool ProcessCommand(string[] args) {
             // register
             if (args.Length == 0 || string.Compare(args[0], "-register", true) == 0) {
                 string iconPath = Application.CommonAppDataPath + Path.DirectorySeparatorChar + "MenuIcon.ico";

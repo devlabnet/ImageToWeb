@@ -50,7 +50,7 @@ namespace imageToWeb {
                 keySubCommand.SetValue(null, menuCommand);
 
                 keySubAction = keyShell.CreateSubKey("Settings"); //Registry.ClassesRoot.CreateSubKey(string.Format(@"{ 0}\action1", regPath));
-                keySubAction.SetValue(null, "Settings");
+                keySubAction.SetValue(null, imageToWeb.Program.rm.GetString("settingsReg", Program.cul));
                 keySubAction.SetValue("icon", "imageres.dll,109");
                 keySubCommand = keySubAction.CreateSubKey("command");
                 keySubCommand.SetValue(null, settingsCommand);

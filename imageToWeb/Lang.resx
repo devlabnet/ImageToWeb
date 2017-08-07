@@ -138,6 +138,9 @@
   <data name="settings" xml:space="preserve">
     <value>Gestion des Paramètres</value>
   </data>
+  <data name="settingsReg" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
   <data name="unregOK" xml:space="preserve">
     <value>L'extention shell {0} à été supprimée.</value>
   </data>
