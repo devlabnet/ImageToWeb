@@ -23,7 +23,7 @@ namespace imageToWeb {
             //Console.WriteLine("Installed Language Info:{0}", ci.Name);
             if (Properties.Settings1.Default.userCulture == "undef") {
                 CultureInfo ci = CultureInfo.CurrentUICulture;
-                Console.WriteLine("Current UI Language Info: {0}", ci.Name);
+                //Console.WriteLine("Current UI Language Info: {0}", ci.Name);
                 if (ci.Name != "fr-FR") {
                     cul = CultureInfo.CreateSpecificCulture("en");     //create en-US culture for default
                     Properties.Settings1.Default.userCulture = "en-US";
