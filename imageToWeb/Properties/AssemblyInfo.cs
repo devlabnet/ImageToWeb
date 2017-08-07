@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("imageToWeb")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Contextual Menu to Reduce Image weight for WEB")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("DevLabNet.eu")]
 [assembly: AssemblyProduct("imageToWeb")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2017 DevLabNet")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

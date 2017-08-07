@@ -58,5 +58,17 @@ namespace imageToWeb.Properties {
                 this["userCulture"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("undef")]
+        public string userCultureShort {
+            get {
+                return ((string)(this["userCultureShort"]));
+            }
+            set {
+                this["userCultureShort"] = value;
+            }
+        }
     }
 }

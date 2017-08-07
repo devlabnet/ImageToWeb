@@ -40,6 +40,9 @@ namespace imageToWeb {
             buttonOK.Text = imageToWeb.Program.rm.GetString("save", Program.cul);
             lblMaxSize.Text = imageToWeb.Program.rm.GetString("lblMaxSize", Program.cul);
             lblQuality.Text = imageToWeb.Program.rm.GetString("lblQuality", Program.cul);
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(lblMaxSize, "Save changes");
+
         }
 
         private void MaxSizeTrackBar_Scroll(object sender, EventArgs e) {
@@ -71,6 +74,11 @@ namespace imageToWeb {
             imageToWeb.Program.cul = new CultureInfo("en-US");
             Properties.Settings1.Default.userCulture = "en-US";
             FormInitializeCulture();
+        }
+
+        private void AboutBtn_Click(object sender, EventArgs e) {
+            AboutBox ab = new AboutBox();
+            ab.ShowDialog();
         }
     }
 }

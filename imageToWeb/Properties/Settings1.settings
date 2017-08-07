@@ -11,5 +11,8 @@
     <Setting Name="userCulture" Type="System.String" Scope="User">
       <Value Profile="(Default)">undef</Value>
     </Setting>
+    <Setting Name="userCultureShort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">undef</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

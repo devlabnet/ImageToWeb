@@ -33,6 +33,7 @@
             this.lblQuality = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AboutBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSizeTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QualityTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -145,6 +146,17 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.FrClicked);
             // 
+            // AboutBtn
+            // 
+            this.AboutBtn.AutoSize = true;
+            this.AboutBtn.Location = new System.Drawing.Point(205, 148);
+            this.AboutBtn.Name = "AboutBtn";
+            this.AboutBtn.Size = new System.Drawing.Size(80, 39);
+            this.AboutBtn.TabIndex = 11;
+            this.AboutBtn.Text = "About";
+            this.AboutBtn.UseVisualStyleBackColor = true;
+            this.AboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
+            // 
             // SettingForm
             // 
             this.AcceptButton = this.buttonOK;
@@ -154,6 +166,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(642, 212);
+            this.Controls.Add(this.AboutBtn);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.QualityLabel);
@@ -193,5 +206,6 @@
         private System.Windows.Forms.Label lblQuality;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button AboutBtn;
     }
 }

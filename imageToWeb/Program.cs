@@ -27,9 +27,11 @@ namespace imageToWeb {
                 if (ci.Name != "fr-FR") {
                     cul = CultureInfo.CreateSpecificCulture("en");     //create en-US culture for default
                     Properties.Settings1.Default.userCulture = "en-US";
+                    Properties.Settings1.Default.userCultureShort = "en";
                 } else {
                     cul = CultureInfo.CreateSpecificCulture("fr");     //create fr culture
                     Properties.Settings1.Default.userCulture = "fr-FR";
+                    Properties.Settings1.Default.userCultureShort = "fr";
                 }
             } else {
                 cul = CultureInfo.CreateSpecificCulture(Properties.Settings1.Default.userCulture);     //create user settings culture for default
